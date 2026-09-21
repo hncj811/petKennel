@@ -1,5 +1,5 @@
-# Use Node 18 Alpine
-FROM node:18-alpine
+# Use Node 18 Alpine Changed to Use Node 24 Alpine for the latest LTS version
+FROM node:24-alpine
 
 WORKDIR /app
 

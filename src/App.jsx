@@ -6,10 +6,11 @@ class App extends Component {
   constructor(props) {
     super(props);
     
-    // TODO: Initialize state here
-    // this.state = {
-    //   characters: initialData
-    // };
+     // Start the kennel with the pets from data.js
+  this.state = 
+    {
+    characters: initialData
+    };
   }
 
   // Method to handle state changes from children
@@ -29,7 +30,29 @@ class App extends Component {
     });
     this.setState({ characters: updatedCharacters });
     */
-  }
+    const updatedCharacters = this.state.characters.map(char => {
+      if (char.id === id) { // Checks which pet button is clicked.
+        if (char.id === 1) { // Reggie
+          return {
+            ...char,
+            image: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Rusty_The_Smiling_Guinea_Pig_(235589647).jpeg',
+            status: 'Happy'
+          };
+        }
+
+        // Penny
+        return {
+          ...char,
+          image: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Pet_rabbit_(2).JPG',
+          status: 'Happy'
+        };
+      }
+
+      return char; // Pet not clicked stays the same.
+    });
+    this.setState({ characters: updatedCharacters });
+    };
+  
 
   render() {
     return (
@@ -49,7 +72,17 @@ class App extends Component {
                   onAction={this.handleUpdate}
                 />
               ))} 
-          */}
+          */} 
+         {this.state && this.state.characters.map(char => ( //goes thru each pet one at a time
+                <ChildComponent 
+                  key={char.id} //makes an id for each pet
+                  id={char.id} //sends the pet info from parent to the child 
+                  name={char.name}
+                  image={char.image}
+                  status={char.status}
+                  onAction={this.handleUpdate} //when the button is clicked in send the id of the pet so the parent can update the pets image and status
+                />
+              ))} 
         </div>
       </div>
     );
