@@ -21,7 +21,10 @@ A beginner React project that demonstrates **class-based components**, **state m
 
 ## Description
 
-The Pet Kennel app renders a list of pets. Each pet card displays the pet's name and a photo. Clicking a button cycles through the pet's images (happy, angry, sleeping, etc.). The project is intentionally structured to practice:
+Pet Kennel is a site with two pets. Both pets start out hungry. When you click the Feed Me button, the pet becomes switches to happy and the picture changes showing a happier pet.
+
+I learned how information held in the parent travlels to the child component. I also learned STATE = REMEMBER/CHANGE,
+PROPS = PASS, BUTTON = ACTION
 
 - Creating **class-based React components**
 - Lifting **state** up to a parent component
@@ -34,7 +37,150 @@ The Pet Kennel app renders a list of pets. Each pet card displays the pet's name
 
 > _Add a screenshot or GIF here once your app is running._
 
+#### Before Feeding the Pets
+
+![Hungry Pets](screenshots/Hungry%20Pet.png)
+
+#### After Feeding the Pets
+
+![Happy Pets](screenshots/Happy%20Pet.png)
+
+#### Browser Console Check
+
+The browser console shows both pet buttons running without errors.
+
+![Browser Console Check](screenshots/Browser%20Consol%20Check.png)
 ---
+## Installation
+
+This is how I got my Pet Kennel project set up and running. I used Windows, VS Code, Ubuntu through WSL, and Docker Desktop.
+
+### What You Need
+
+Before getting started, make sure you have:
+
+- Git
+- VS Code
+- WSL with Ubuntu
+- Docker Desktop
+
+I used Node 24 inside Docker, so I did not need to install Node separately in Ubuntu.
+
+### 1. Clone the Project
+
+Open the Ubuntu terminal and clone the project:
+
+```bash
+git clone YOUR-GITHUB-REPO-LINK
+```
+
+Then go into the project folder:
+
+```bash
+cd petKennel
+```
+
+### 2. Open the Project in VS Code
+
+From the project folder, run:
+
+```bash
+code .
+```
+
+### 3. Set Up Docker with Ubuntu
+
+Open Docker Desktop and make sure it is running.
+
+Since I used Ubuntu through WSL, I also had to turn on Docker's WSL integration.
+
+In Docker Desktop:
+
+1. Go to **Settings**
+2. Go to **Resources**
+3. Go to **WSL Integration**
+4. Turn on integration for **Ubuntu**
+5. Apply the changes
+
+After doing this, Ubuntu was able to use Docker.
+
+You can check that Docker is working from the Ubuntu terminal by running:
+
+```bash
+docker ps
+```
+
+### 4. Build and Run Pet Kennel
+
+From the Pet Kennel folder in the Ubuntu terminal, run:
+
+```bash
+docker compose up --build
+```
+
+The first build may take a little longer because Docker has to download and install everything the project needs.
+
+### 5. Open the App
+
+Once everything is running, open a browser and go to:
+
+`http://localhost:3000`
+
+You should see Reggie and Penny. Both pets start out hungry and have a **Feed Me!** button.
+
+### 6. Stop the App
+
+When you are finished, press:
+
+`Ctrl + C`
+
+Then you can shut down the Docker container with:
+
+```bash
+docker compose down
+```
+
+### One Problem I Ran Into
+
+The original Dockerfile used Node 18. When I tried to build the project, Vite would not run with that version of Node.
+
+I changed the Dockerfile to use Node 24 and rebuilt the project. After that change, the app was able to run correctly.
+
+----
+
+## Usage
+
+When the app first opens, Reggie and Penny are both hungry.
+
+Each pet has their own **Feed Me** button. When I click the button, that pet changes from hungry to happy and their picture changes to a happy picture.
+
+The other pet stays the same until I click their button too.
+
+This helped me see how the child component can send information back to the parent and how the parent can update the pet's state.
+
+----
+
+## Technologies Used
+
+## Technologies Used
+
+### Hardware
+- [Dell Computer](https://www.dell.com/)
+
+### Software and Tools
+- [Microsoft Windows](https://www.microsoft.com/windows)
+- [WSL / Ubuntu](https://ubuntu.com/desktop/wsl)
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [React 19](https://react.dev/)
+- [Vite 7](https://vite.dev/)
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [Node.js 24](https://nodejs.org/)
+- [Docker](https://www.docker.com/)
+- [Git](https://git-scm.com/)
+- [GitHub](https://github.com/)
+- [Google Chrome](https://www.google.com/chrome/)
+- [ChatGPT](https://chatgpt.com/)
+
 
 ## Getting Started
 

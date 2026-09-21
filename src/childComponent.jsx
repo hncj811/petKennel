@@ -9,6 +9,8 @@ class ChildComponent extends React.Component {
   }
   
   render(){
+    //Get the pet info from the app.
+    const { id, name, image, status, onAction } = this.props;
    return (
     <div className="child-card">
       {/* TODO: 
@@ -17,8 +19,14 @@ class ChildComponent extends React.Component {
         3. Add a <p> tag for the content
         4. Add a <button> that fires the click event
       */}
-      
-      <button>Click Me</button>
+      {/*Shows the Pet Name*/}
+      <h2>Hello World. My name is {name}</h2>
+      {/*Shows the Actual Image*/}
+      <img src={image} alt={name} style={{ width: '150px', height: '150px', objectFit: 'cover' }} />
+      {/*Shows how the Pet Is Feeling*/}
+      <p>Today I feel {status}</p>
+      {/*Button to change the Pet's Feeling*/}
+       <button onClick={() => onAction(id)}>Feed Me</button>
     </div>
   );
  }
