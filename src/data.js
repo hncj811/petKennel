@@ -27,5 +27,19 @@ export const initialData = [
     ],
     statuses: ["Hungry", "Happy"],
     currentIndex: 0
-  }
+  },
+  {
+  id: 3,
+    name: 'Jackson "Joe" Taylor',
+    status: "Hungry",
+    image: "/images/penny-original-hungry.jpg",
+
+    // Same idea for Penny. I kept her original pictures.
+    images: [
+      "/images/penny-original-hungry.jpg",
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pet_rabbit_(2).JPG"
+    ],
+    statuses: ["Hungry", "Happy"],
+    currentIndex: 0
+}
 ];

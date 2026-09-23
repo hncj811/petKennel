@@ -45,8 +45,11 @@ class App extends Component {
         }
 
         return char; // Pet not clicked stays the same.
-      })
-    }));
+        handleAdopt = (id) => {
+          console.log("Parent received adopt event for ID:", id);
+            characters: previousState.characters.filter(char => char.id !== id)
+          }));
+        }
     };
   
 
