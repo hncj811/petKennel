@@ -30,34 +30,30 @@ class App extends Component {
     });
     this.setState({ characters: updatedCharacters });
     */
-    const updatedCharacters = this.state.characters.map(char => {
-      if (char.id === id) { // Checks which pet button is clicked.
-        if (char.id === 1) { // Reggie
+
+    this.setState(previousState => ({
+      characters: previousState.characters.map(char => {
+        if (char.id === id) { // Checks which pet button is clicked.
+          const nextIndex = (char.currentIndex + 1) % char.images.length;
+
           return {
             ...char,
-            image: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Rusty_The_Smiling_Guinea_Pig_(235589647).jpeg',
-            status: 'Happy'
+            currentIndex: nextIndex,
+            image: char.images[nextIndex],
+            status: char.statuses[nextIndex]
           };
         }
 
-        // Penny
-        return {
-          ...char,
-          image: 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Pet_rabbit_(2).JPG',
-          status: 'Happy'
-        };
-      }
-
-      return char; // Pet not clicked stays the same.
-    });
-    this.setState({ characters: updatedCharacters });
+        return char; // Pet not clicked stays the same.
+      })
+    }));
     };
   
 
   render() {
     return (
       <div className="app-container" style={{ padding: '40px', fontFamily: 'Arial, sans-serif' }}>
-        <h1>Parent Component (Class-Based)</h1>
+        <h1> Briggs Pet Kennel </h1>
         
         <div className="children-container" style={{ display: 'flex', gap: '20px', marginTop: '20px' }}>
           {/* TODO: Map through your state characters here and render ChildComponents */}
@@ -74,13 +70,14 @@ class App extends Component {
               ))} 
           */} 
          {this.state && this.state.characters.map(char => ( //goes thru each pet one at a time
+                /* makes an id for each pet and sends its info to the child */
                 <ChildComponent 
-                  key={char.id} //makes an id for each pet
-                  id={char.id} //sends the pet info from parent to the child 
+                  key={char.id}
+                  id={char.id}
                   name={char.name}
                   image={char.image}
                   status={char.status}
-                  onAction={this.handleUpdate} //when the button is clicked in send the id of the pet so the parent can update the pets image and status
+                  onAction={this.handleUpdate}
                 />
               ))} 
         </div>
